@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail - {{ result.title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<!-- Header -->
+<div class="bg-gray-700 px-3 py-2">
+    <h2 class="text-3xl font-light text-white m-0"><a href="/">Fast searching Demo</a></h2>
+</div>
+
+<!-- Detail Section -->
+<div class="mt-10 px-5">
+    {% if error_message %}
+        <div class="bg-red-200 text-red-700 p-4 mb-5">
+            <strong>Error:</strong> {{ error_message }}
+        </div>
+    {% else %}
+        <h2 class="text-gray-800 font-bold text-2xl mb-5">{{ result.title }}</h2>
+        <p class="mt-2"><strong>Score:</strong> {{ result.score }}</p>
+        <p class="text-gray-600 text-lg">{{ result.context }}</p>
+        <div class="mt-5">
+            <a href="/" class="text-blue-700 hover:underline">Go Back to Search</a>
+        </div>
+    {% endif %}
+</div>
+
+
+<!-- Footer -->
+<footer class="mt-auto bg-gray-800 text-white text-center py-4">
+    <p class="text-sm">&copy; 2024 Fast Searching Demo. All rights reserved.</p>
+</footer>
+</body>
+</html>

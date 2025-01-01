@@ -1,0 +1,6 @@
+elastic-transport
+elasticsearch
+requests
+urllib3
+pandas
+httpx

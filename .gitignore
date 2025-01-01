@@ -1,0 +1,5 @@
+venv/
+
+data_import/data.pkl
+
+flask_app/config.json

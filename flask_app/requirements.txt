@@ -1,0 +1,7 @@
+certifi
+elastic-transport
+elasticsearch
+Flask
+requests
+urllib3
+google-generativeai
