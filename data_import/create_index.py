@@ -11,18 +11,32 @@ else:
     print("Không thể kết nối Elasticsearch.")
     exit(1)
 
-# Define mapping with dense_vector for embeddings
-mapping = {
+# Define settings and mapping with custom analyzer for stopwords
+index_name = "tvtt"
+settings_and_mapping = {
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "custom_analyzer": {
+                    "type": "standard",
+                    "stopwords": "_vietnamese_"  # Sử dụng stopwords cho tiếng Việt
+                }
+            }
+        }
+    },
     "mappings": {
         "properties": {
             "id": {"type": "text"},
-            "title": {"type": "text"},
-            "text": {"type": "text"},
+            "title": {
+                "type": "text",
+                "analyzer": "custom_analyzer"  # Áp dụng custom analyzer cho field 'title'
+            },
+            "text": {
+                "type": "text",
+            }
         }
     }
 }
-
-index_name = "tvtt"
 
 # Xóa chỉ mục cũ nếu có
 if client.indices.exists(index=index_name):
@@ -33,10 +47,10 @@ if client.indices.exists(index=index_name):
         print(f"Đã xảy ra lỗi khi xóa chỉ mục: {e}")
         exit(1)
 
-# Tạo chỉ mục mới với mapping
+# Tạo chỉ mục mới với custom analyzer và mapping
 try:
-    client.indices.create(index=index_name, body=mapping)
-    print(f"Chỉ mục '{index_name}' đã được tạo.")
+    client.indices.create(index=index_name, body=settings_and_mapping)
+    print(f"Chỉ mục '{index_name}' đã được tạo với stopwords.")
 except RequestError as e:
     print(f"Đã xảy ra lỗi khi tạo chỉ mục: {e}")
     exit(1)
