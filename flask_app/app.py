@@ -96,7 +96,6 @@ def search():
                     corpus += passage.get('text', '') + "."
 
                 results = sorted(results, key=lambda x: x['score'], reverse=True)
-                print(f"Received corpus: {query}")
                 answer = generative_answer(model, corpus, query)
 
             except Exception as e:

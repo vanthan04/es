@@ -5,9 +5,8 @@ git init
 git clone https://github.com/vanthan04/demo_ir.git
 ```
 
-# 2. Tải Dữ Liệu Đã Xử Lý
-
-Tải dữ liệu đã xử lý tại [đây](https://www.kaggle.com/datasets/tranvanthan/dataa-embedding-wiki).
+# 2. Xử lí dữ liệu
+Chạy file notebook trong folder process_data để có bộ dữ liệu đã được xử lí
 
 # 3. Mở terminal
 
